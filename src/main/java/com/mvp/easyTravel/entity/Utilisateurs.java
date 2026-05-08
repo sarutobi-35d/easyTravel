@@ -1,0 +1,71 @@
+package com.mvp.easyTravel.entity;
+
+import com.mvp.easyTravel.entity.enums.Role;
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "users")
+public class Utilisateurs {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String nom;
+    private String email;
+    private String password;
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
+    //++ users travaillent pour une seule agence
+    @ManyToOne
+    @JoinColumn(name = "agence_id")
+    private Agence agence;
+
+    //GETTERS & SETTERS
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public Agence getAgence() {
+        return agence;
+    }
+
+    public void setAgence(Agence agence) {
+        this.agence = agence;
+    }
+}
