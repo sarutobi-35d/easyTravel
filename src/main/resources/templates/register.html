@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription Vesta</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" th:href="@{/css/register.css}">
+</head>
+<body>
+<div class="container">
+    <div class="registration-card">
+
+        <div class="stepper">
+            <div class="step active" id="step-i-1">
+                <div class="circle"><i class='bx bx-building-house'></i></div>
+                <span>1. Agence</span>
+            </div>
+            <div class="line" id="line-1"></div>
+            <div class="step" id="step-i-2">
+                <div class="circle"><i class='bx bx-user'></i></div>
+                <span>2. Admin</span>
+            </div>
+            <div class="line" id="line-2"></div>
+            <div class="step" id="step-i-3">
+                <div class="circle"><i class='bx bx-check-shield'></i></div>
+                <span>3. Validation</span>
+            </div>
+        </div>
+
+        <form th:action="@{/inscription}" th:object="${agencyOwnerDto}" method="post"
+              id="registrationForm">
+
+            <div class="form-step active" id="form-step-1">
+                <h2><i class='bx bx-info-circle'></i> Informations de l'Agence</h2>
+                <div class="input-group">
+                    <label>Nom de l'agence</label>
+                    <div class="input-wrapper">
+                        <i class='bx bx-buildings'></i>
+                        <input type="text" th:field="*{nameAgence}" placeholder="Ex: Cameroon Travel Tours">
+                    </div>
+                    <p class="error-msg" th:if="${#fields.hasErrors('nameAgence')}" th:errors="*{nameAgence}"></p>
+                </div>
+                <div class="input-group">
+                    <label>Siège Social</label>
+                    <div class="input-wrapper">
+                        <i class='bx bx-map-pin'></i>
+                        <input type="text" th:field="*{siegeSocial}" placeholder="Ex: Yaoundé, face Boulangerie Acacias">
+                    </div>
+                    <p class="error-msg" th:if="${#fields.hasErrors('siegeSocial')}" th:errors="*{siegeSocial}"></p>
+                </div>
+                <div class="button-row">
+                    <button type="button" class="btn-next" onclick="nextStep(2)">Continuer <i class='bx bx-right-arrow-alt'></i></button>
+                </div>
+            </div>
+
+            <div class="form-step" id="form-step-2">
+                <h2><i class='bx bx-user-pin'></i> Informations de l'Administrateur</h2>
+                <div class="grid-inputs">
+                    <div class="input-group">
+                        <label>Votre Nom</label>
+                        <div class="input-wrapper">
+                            <i class='bx bx-user'></i>
+                            <input type="text" th:field="*{nom}" placeholder="Nom complet">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Mot de Passe</label>
+                        <div class="input-wrapper">
+                            <i class='bx bx-lock-alt'></i>
+                            <input type="password" th:field="*{mdp}" placeholder="********">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Votre Email</label>
+                        <div class="input-wrapper">
+                            <i class='bx bx-envelope'></i>
+                            <input type="email" th:field="*{email}" placeholder="info@travel.cm">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Confirmer le mot de passe</label>
+                        <div class="input-wrapper">
+                            <i class='bx bx-lock-open-alt'></i>
+                            <input type="password" th:field="*{confirmMdp}" placeholder="********">
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label>Code d'invitation Vesta</label>
+                    <div class="input-wrapper">
+                        <i class='bx bx-key'></i>
+                        <input type="text" th:field="*{codeInvitation}" placeholder="X1Y2-Z3A4">
+                    </div>
+                    <small>Code fourni par l'administration pour sécuriser l'accès</small>
+                </div>
+                <div class="button-row">
+                    <button type="button" class="btn-prev" onclick="prevStep(1)">Précédent</button>
+                    <button type="button" class="btn-next" onclick="nextStep(3)">Continuer <i class='bx bx-right-arrow-alt'></i></button>
+                </div>
+            </div>
+
+            <div class="form-step" id="form-step-3">
+                <div class="summary-check">
+                    <i class='bx bx-check-double' style="font-size: 4rem; color: var(--accent-color);"></i>
+                    <h2>Prêt à lancer l'aventure ?</h2>
+                    <p>Veuillez vérifier vos informations une dernière fois. En cliquant sur le bouton ci-dessous, vous enregistrez votre agence sur la plateforme.</p>
+                </div>
+                <div class="button-row">
+                    <button type="button" class="btn-prev" onclick="prevStep(2)">Précédent</button>
+                    <button type="submit" class="btn-submit">Finaliser l'inscription</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<script th:src="@{/js/register.js}"></script>
+
+</body>
+</html>

@@ -21,7 +21,7 @@ public class Agence {
 
     //Agence à ++ users
     @OneToMany(mappedBy = "agence")
-    private List<Utilisateurs> utilisateurs;
+    private List<Utilisateur> utilisateurs;
 
     //GETTERS & SETTERS
     public Long getId() {
@@ -64,11 +64,11 @@ public class Agence {
         this.voyages = voyages;
     }
 
-    public List<Utilisateurs> getUtilisateurs() {
+    public List<Utilisateur> getUtilisateurs() {
         return utilisateurs;
     }
 
-    public void setUtilisateurs(List<Utilisateurs> utilisateurs) {
+    public void setUtilisateurs(List<Utilisateur> utilisateurs) {
         this.utilisateurs = utilisateurs;
     }
 }

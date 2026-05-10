@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion - Waka Easy</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" th:href="@{/css/register.css}">
+
+</head>
+<body>
+
+<div class="container">
+    <div class="registration-card" style="max-width: 450px; margin: auto;">
+        <div style="text-align: center; margin-bottom: 30px;">
+            <h1 style="color: var(--accent-color); font-size: 2rem;">Waka Easy</h1>
+            <p style="color: var(--text-secondary);">Bon retour parmi nous !</p>
+        </div>
+
+        <div th:if="${param.error}" class="error-msg" style="text-align: center; margin-bottom: 15px;">
+            Email ou mot de passe incorrect.
+        </div>
+
+        <form th:action="@{/login}" method="post">
+            <div class="input-group">
+                <label>Email professionnel</label>
+                <div class="input-wrapper">
+                    <i class='bx bx-envelope'></i>
+                    <input type="email" name="username" required placeholder="nom@agence.com">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Mot de passe</label>
+                <div class="input-wrapper">
+                    <i class='bx bx-lock-alt'></i>
+                    <input type="password" name="password" required placeholder="********">
+                </div>
+            </div>
+
+            <div class="button-row" style="flex-direction: column; gap: 10px;">
+                <button type="submit" class="btn-submit" style="width: 100%;">Se connecter</button>
+                <p style="text-align: center; font-size: 0.9rem; margin-top: 15px;">
+                    Pas encore de compte ?
+                    <a th:href="@{/inscription}" style="color: var(--accent-color); text-decoration: none;">Inscrivez votre agence</a>
+                </p>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
