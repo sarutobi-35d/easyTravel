@@ -45,7 +45,7 @@ public class AuthController {
             return "redirect:/connexion";
 
         } catch (RuntimeException e) {
-            
+
             redirectAttributes.addFlashAttribute("error",
                     e.getMessage());
             return "redirect:/inscription";

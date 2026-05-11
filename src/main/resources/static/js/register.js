@@ -36,3 +36,19 @@ function updateStepper(step) {
         if(i < step) document.getElementById('line-' + i).classList.add('active');
     }
 }
+
+//TOGGLE POUR MOT DE PASSE
+function togglePassword(inputId, iconE1) {
+    const input = document.getElementById(inputId);
+
+    if(input.type === "password"){
+        input.type = "text";
+        iconE1.classList.remove("bx-hide");
+        iconE1.classList.add("bx-show");
+
+    } else {
+        input.type = "password";
+        iconE1.classList.remove("bx-show");
+        iconE1.classList.add("bx-hide");
+    }
+}

@@ -35,7 +35,8 @@
                 <label>Mot de passe</label>
                 <div class="input-wrapper">
                     <i class='bx bx-lock-alt'></i>
-                    <input type="password" name="password" required placeholder="********">
+                    <input type="password" name="password" id="password" required placeholder="********">
+                    <i class='bx bx-hide' onclick="togglePassword('password', this)" style="cursor: pointer;"></i>
                 </div>
             </div>
 
@@ -49,5 +50,23 @@
         </form>
     </div>
 </div>
+
+<script>
+    function togglePassword(inputId, iconE1) {
+    const input = document.getElementById(inputId);
+
+    if(input.type === "password"){
+        input.type = "text";
+        iconE1.classList.remove("bx-hide");
+        iconE1.classList.add("bx-show");
+
+    } else {
+        input.type = "password";
+        iconE1.classList.remove("bx-show");
+        iconE1.classList.add("bx-hide");
+    }
+}
+</script>
+
 </body>
 </html>

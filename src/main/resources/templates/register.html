@@ -69,6 +69,7 @@
                         <div class="input-wrapper">
                             <i class='bx bx-lock-alt'></i>
                             <input type="password" th:field="*{mdp}" placeholder="********">
+                            <i class='bx bx-hide' onclick="togglePassword('mdp', this)" style="cursor: pointer;"></i>
                         </div>
                     </div>
                     <div class="input-group">
@@ -83,6 +84,7 @@
                         <div class="input-wrapper">
                             <i class='bx bx-lock-open-alt'></i>
                             <input type="password" th:field="*{confirmMdp}" placeholder="********">
+                            <i class='bx bx-hide' onclick="togglePassword('confirmMdp', this)" style="cursor: pointer;"></i>
                         </div>
                     </div>
                 </div>
